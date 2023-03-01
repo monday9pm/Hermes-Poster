@@ -6,6 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
+secret-*.json
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
@@ -245,7 +246,7 @@ cmake-build-*/
 
 # IntelliJ
 out/
-
+.idea/
 # mpeltonen/sbt-idea plugin
 .idea_modules/
 
