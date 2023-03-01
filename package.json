@@ -1,0 +1,25 @@
+{
+  "name": "hermes-poster",
+  "version": "1.0.0",
+  "description": "Delivery systems to translate and convert from md to others such as medium.com",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/monday9pm/Hermes-Poster.git"
+  },
+  "keywords": [
+    "mediumapi",
+    "documents",
+    "translator"
+  ],
+  "author": "Jaeyeoul Ahn <jb7959@naver.com> (https://github.com/jb7959)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/monday9pm/Hermes-Poster/issues"
+  },
+  "homepage": "https://github.com/monday9pm/Hermes-Poster#readme"
+}
