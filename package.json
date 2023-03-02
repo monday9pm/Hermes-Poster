@@ -1,6 +1,6 @@
 {
   "name": "hermes-poster",
-  "version": "0.0.1-beta.1",
+  "version": "0.0.1-beta.2",
   "description": "Delivery systems to translate and convert from md to others such as medium.com",
   "main": "src/index.js",
   "scripts": {
@@ -28,5 +28,13 @@
   "dependencies": {
     "marked": "4.2.12",
     "moment": "^2.29.4"
+  },
+  "engines": {
+    "node": ">= 12"
+  },
+  "devDependencies": {
+    "eslint": "^8.35.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5"
   }
 }
