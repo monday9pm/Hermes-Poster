@@ -8,6 +8,7 @@
     "test:lint": "eslint .",
     "gen-secret": "node src/utils/github-secret-index.js",
     "lint": "eslint . --fix",
+    "format": "prettier --write 'src/**/*.{js}'",
     "start": "node src/index.js"
   },
   "repository": {
@@ -37,9 +38,12 @@
   "devDependencies": {
     "eslint": "^8.35.0",
     "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.3",
-    "lint-staged": "^13.1.2"
+    "lint-staged": "^13.1.2",
+    "prettier": "2.8.4"
   },
   "lint-staged": {
     "*.js": [
