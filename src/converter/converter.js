@@ -1,7 +1,7 @@
 class Converter {
-    static mdToHtml(md) {
+  static mdToHtml(md) {
 
-    }
+  }
 }
 
 module.exports = GithubSecretHelper;

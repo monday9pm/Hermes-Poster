@@ -4,9 +4,11 @@
   "description": "Delivery systems to translate and convert from md to others such as medium.com",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:lint": "eslint .",
     "gen-secret": "node src/utils/github-secret-index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint . --fix",
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
