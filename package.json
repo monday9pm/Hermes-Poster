@@ -4,13 +4,12 @@
   "description": "Delivery systems to translate and convert from md to others such as medium.com",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "test:lint": "eslint .",
     "gen-secret": "node src/utils/github-secret-index.js",
     "lint:fix": "eslint . --fix",
     "prettier:fix": "prettier './src/**/*.{js,jsx,ts,tsx}' --write",
     "prepare": "husky install",
-    "pre-commit": "lint-staged",
     "start": "node src/index.js"
   },
   "repository": {
@@ -39,16 +38,18 @@
     "node": ">= 12"
   },
   "devDependencies": {
+    "@types/jest": "^29.4.0",
     "eslint": "^8.35.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jest": "^27.2.1",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "husky": "^8.0.3",
-    "lint-staged": "^13.1.2",
+    "jest": "^29.4.3",
     "prettier": "2.8.4"
-  },
-  "lint-staged": {
-    "*.js": "eslint --cache --fix"
   }
 }

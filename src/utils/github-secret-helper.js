@@ -24,6 +24,8 @@ class GithubSecretHelper {
         },
       );
     }
+
+    return converted;
   }
 
   static decrypt(secretsInBase64) {
