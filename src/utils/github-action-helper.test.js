@@ -7,9 +7,18 @@ describe('GithubActionHelper', () => {
       test2: '2222',
       test3: '3333',
     };
-    const result = GithubActionHelper.loadSecret('action-secret-test.json');
+    const result = GithubActionHelper.loadSecret('action-secret-test.conf');
     expect(result.test1).toBe(expected.test1);
     expect(result.test2).toBe(expected.test2);
     expect(result.test3).toBe(expected.test3);
+  });
+
+  test('loadAuthorNames', () => {
+    const result = GithubActionHelper.loadAuthorNames(
+      'action-authors-test.conf',
+    );
+    expect(result[0]).toBe('jay');
+    expect(result[1]).toBe('tom');
+    expect(result[2]).toBe('livermore');
   });
 });
