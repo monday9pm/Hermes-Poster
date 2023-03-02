@@ -7,8 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:lint": "eslint .",
     "gen-secret": "node src/utils/github-secret-index.js",
-    "lint": "eslint . --fix",
-    "format": "prettier --write 'src/**/*.{js}'",
+    "lint:fix": "eslint . --fix",
+    "prettier:fix": "prettier './src/**/*.{js,jsx,ts,tsx}' --write",
+    "prepare": "husky install",
+    "pre-commit": "lint-staged",
     "start": "node src/index.js"
   },
   "repository": {
@@ -29,6 +31,7 @@
   },
   "homepage": "https://github.com/monday9pm/Hermes-Poster#readme",
   "dependencies": {
+    "eslint-config-airbnb": "^19.0.4",
     "marked": "4.2.12",
     "moment": "^2.29.4"
   },
@@ -46,14 +49,6 @@
     "prettier": "2.8.4"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "*.js": "eslint --cache --fix"
   }
 }
