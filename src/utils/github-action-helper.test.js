@@ -13,9 +13,9 @@ describe('GithubActionHelper', () => {
     expect(result.test3).toBe(expected.test3);
   });
 
-  test('loadAuthorNames', () => {
-    const result = GithubActionHelper.loadAuthorNames(
-      'action-authors-test.conf',
+  test('loadArticles', () => {
+    const result = GithubActionHelper.loadArticles(
+      'action-articles-test.conf',
     );
     expect(result[0]).toBe('jay');
     expect(result[1]).toBe('tom');

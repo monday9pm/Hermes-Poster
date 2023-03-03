@@ -15,7 +15,7 @@ class GithubActionHelper {
     }
   }
 
-  static loadAuthorNames(fileLocation = 'action-authors.conf') {
+  static loadArticles(fileLocation = 'action-articles.conf') {
     try {
       const authors = fs.readFileSync(fileLocation, 'utf8');
       return authors.trim().split(' ');
