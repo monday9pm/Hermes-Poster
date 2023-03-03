@@ -14,9 +14,7 @@ describe('GithubActionHelper', () => {
   });
 
   test('loadArticles', () => {
-    const result = GithubActionHelper.loadArticles(
-      'action-articles-test.conf',
-    );
+    const result = GithubActionHelper.loadArticles('action-articles-test.conf');
     expect(result[0]).toBe('jay');
     expect(result[1]).toBe('tom');
     expect(result[2]).toBe('livermore');
