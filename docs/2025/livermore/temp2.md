@@ -10,7 +10,7 @@ The Hermes Poster project involves the following steps:
 1. Upload - The user uploads the document to the Hermes Poster platform.
 2. Conversion - Hermes Poster automatically converts the document into the desired format.
 3. Forwarding - The converted document is then forwarded to the desired recipient.
-   Hermes Poster is designed to be user-friendly, with a simple and intuitive interface that allows users to upload and convert documents quickly and easily.
+Hermes Poster is designed to be user-friendly, with a simple and intuitive interface that allows users to upload and convert documents quickly and easily.
 
 ## Benefits of Hermes Poster
 Hermes Poster offers several benefits for businesses and individuals looking to simplify the document conversion and forwarding process:
