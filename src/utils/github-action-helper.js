@@ -1,5 +1,3 @@
-// For Generator from GitHub Secret to Json
-
 const fs = require('fs');
 const GithubSecretHelper = require('./github-secret-helper');
 
@@ -23,17 +21,19 @@ class GithubActionHelper {
    * @returns {null|{fileLocation: string}[]}
    */
   static loadArticlesMeta(
-    fileLocation = 'action-articles.conf',
-    articlePath = 'articles',
+    configFileName = 'action-articles.conf',
+    articleMiddlePathKeyword = 'articles',
     normalPathsDepth = 4,
   ) {
     try {
-      const articles = fs.readFileSync(fileLocation, 'utf8');
+      const articles = fs.readFileSync(configFileName, 'utf8');
       const articlePaths = articles
         .trim()
         .split(' ')
         .filter(
-          path => !path.search(articlePath) && path.length >= normalPathsDepth,
+          path =>
+            !path.search(articleMiddlePathKeyword) &&
+            path.length >= normalPathsDepth,
         )
         .map(path => {
           if (path.length < 4) {

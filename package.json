@@ -31,11 +31,10 @@
   "dependencies": {
     "eslint-config-airbnb": "^19.0.4",
     "marked": "4.2.12",
-    "moment": "^2.29.4",
-    "node-fetch": "^3.3.0"
+    "moment": "^2.29.4"
   },
   "engines": {
-    "node": ">= 12"
+    "node": ">= 18"
   },
   "devDependencies": {
     "@types/jest": "^29.4.0",

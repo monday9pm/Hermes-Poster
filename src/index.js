@@ -1,4 +1,9 @@
-const GithubActionHelper = require('./utils/github-action-helper');
-const GithubSecretHelper = require('./utils/github-secret-helper');
+const Utils = require('./utils');
+const HermesPoster = require('./HermesPoster');
 
-export { GithubActionHelper, GithubSecretHelper };
+HermesPoster.run();
+
+module.exports = {
+  HermesPoster,
+  Utils,
+};

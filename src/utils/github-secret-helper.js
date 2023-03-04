@@ -1,11 +1,9 @@
-// For Generator from JSON to GitHub Secret
-
 const moment = require('moment');
 const fs = require('fs');
 
 class GithubSecretHelper {
-  static encrypt(fileLocation = 'secret.json', needToMakeSecretFile = false) {
-    const jsonFile = fs.readFileSync(fileLocation, 'utf8');
+  static encrypt(configFileName = 'secret.json', needToMakeSecretFile = false) {
+    const jsonFile = fs.readFileSync(configFileName, 'utf8');
     const secrets = JSON.parse(jsonFile);
 
     // Base64 Encoding
@@ -33,7 +31,7 @@ class GithubSecretHelper {
     const base64DecodedText = Buffer.from(secretsInBase64, 'base64').toString(
       'utf8',
     );
-    console.log('Base64 Decoded Text : ', base64DecodedText);
+    // console.log('Base64 Decoded Text : ', base64DecodedText);
 
     return JSON.parse(base64DecodedText);
   }
