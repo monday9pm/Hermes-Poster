@@ -1,6 +1,6 @@
 {
   "name": "hermes-poster",
-  "version": "0.0.1-beta.3",
+  "version": "0.0.1-beta.4",
   "description": "Delivery systems to translate and convert from md to others such as medium.com",
   "main": "src/index.js",
   "scripts": {

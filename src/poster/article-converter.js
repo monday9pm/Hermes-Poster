@@ -24,6 +24,8 @@ class ArticleConverter {
     baseImageDirPath = 'https://raw.githubusercontent.com/monday9pm/Hermes-Poster/main',
   ) {
     const originalArticle = fs.readFileSync(fileLocation, 'utf8');
+    console.log(`baseImageDirPath: ${baseImageDirPath}`);
+
     return ArticleConverter.convertImageDirPath(
       originalArticle,
       `${baseImageDirPath}/${midPath}`,
