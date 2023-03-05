@@ -15,9 +15,9 @@ class GithubActionHelper {
 
   /**
    * Load Articles MetaInfo object from file path
-   * @param fileLocation
-   * @param articlePath
-   * @param normalPathsDepth
+   * @param configFileName
+   * @param articleMiddlePathKeyword
+   * @param normalPathsDepth Path length is less than 4
    * @returns {null|{fileLocation: string}[]}
    */
   static loadArticlesMeta(
@@ -26,6 +26,11 @@ class GithubActionHelper {
     normalPathsDepth = 4,
   ) {
     try {
+      if (normalPathsDepth.length < 4) {
+        console.warn('Path length is less than 4!!');
+        return null;
+      }
+
       const articles = fs.readFileSync(configFileName, 'utf8');
       const articlePaths = articles
         .trim()
@@ -36,17 +41,14 @@ class GithubActionHelper {
             path.length >= normalPathsDepth,
         )
         .map(path => {
-          if (path.length < 4) {
-            console.warn('Path length is less than 4!!');
-            return [];
-          }
-
           const part = path.split('/');
 
           return {
             writtenYear: part[1],
             authorName: part[2],
-            fileName: part[3],
+            fileName: part
+              .filter(value => value.endsWith('.md') || value.endsWith('.html'))
+              .pop(),
             fileLocation: path,
           };
         });

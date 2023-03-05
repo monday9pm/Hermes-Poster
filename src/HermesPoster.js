@@ -6,6 +6,7 @@ class HermesPoster {
       'action-secret-test.conf',
       'action-articles-test.conf',
     );
+    console.log('HermesPoster :: running');
     deliveryManager.deliver();
   }
 }

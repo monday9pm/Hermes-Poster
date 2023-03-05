@@ -10,10 +10,11 @@ class MediumManager {
     try {
       const authorId = await this.findMediumAuthorIdBy(authorToken);
       const isMarkdown = fileName.endsWith('.md');
+      const isHtml = fileName.endsWith('.html');
       const data = {
-        title: fileName.split('.')[0], // The File Name is Title
+        // title: fileName.split('.')[0], // Medium supports writing title from MD file
         contentFormat: isMarkdown ? 'markdown' : 'html',
-        content: this.getArticles(fileLocation, isMarkdown),
+        content: this.getArticles(fileLocation, isMarkdown, isHtml),
         // canonicalUrl: 'http://localhost:8080/post/453133',
         publishStatus: 'draft',
         notifyFollowers: false,
@@ -36,15 +37,15 @@ class MediumManager {
       console.log(responseJson);
     } catch (err) {
       console.error(
-        `MediumManager :: post / author ${authorName}:: error ${err}`,
+        `Medium Manager :: post / author ${authorName}:: error ${err}`,
       );
     }
   }
 
-  getArticles(fileLocation, isMarkdown) {
-    return isMarkdown
+  getArticles(fileLocation, isMarkdown, isHtml) {
+    return isMarkdown || isHtml
       ? fs.readFileSync(fileLocation, 'utf8')
-      : this.converter.markDownToHtml(fs.readFileSync(fileLocation, 'utf8'));
+      : this.converter.toHtml(fs.readFileSync(fileLocation, 'utf8')); // TODO: remove or change
   }
 
   async findMediumAuthorIdBy(authorToken) {

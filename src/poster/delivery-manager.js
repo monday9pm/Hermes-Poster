@@ -19,7 +19,7 @@ class DeliveryManager {
             console.info(`Medium Manager sent to ${articleInfo.authorName}`);
           });
         } else {
-          // console.warn('Token not found for ' + articleInfo.authorName);
+          console.warn(`Token not found for ${articleInfo.authorName}`);
         }
       });
     }
