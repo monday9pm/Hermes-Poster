@@ -1,10 +1,20 @@
 const DeliveryManager = require('./poster/delivery-manager');
 
 class HermesPoster {
-  static run() {
+  constructor(
+    secretConfigFileName = 'action-secret.conf',
+    articleConfigFileName = 'action-articles.conf',
+    baseImageDirPath = null,
+  ) {
+    this.secretConfigFileName = secretConfigFileName;
+    this.articleConfigFileName = articleConfigFileName;
+    this.baseImageDirPath = baseImageDirPath;
+  }
+  run() {
     const deliveryManager = new DeliveryManager(
-      'action-secret-test.conf',
-      'action-articles-test.conf',
+      this.secretConfigFileName,
+      this.articleConfigFileName,
+      this.baseImageDirPath,
     );
     console.log('HermesPoster :: running');
     deliveryManager.deliver();

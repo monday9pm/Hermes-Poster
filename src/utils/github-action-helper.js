@@ -50,6 +50,9 @@ class GithubActionHelper {
               .filter(value => value.endsWith('.md') || value.endsWith('.html'))
               .pop(),
             fileLocation: path,
+            midPath: part
+              .filter((value, index) => index < part.length - 1)
+              .join('/'),
           };
         });
       return articlePaths;

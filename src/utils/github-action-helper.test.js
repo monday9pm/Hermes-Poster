@@ -43,6 +43,10 @@ describe('GithubActionHelper', () => {
     expect(result[0].fileLocation).toBe('articles/2023/jay/temp.md');
     expect(result[1].fileLocation).toBe('articles/2024/tom/temp1.md');
     expect(result[2].fileLocation).toBe('articles/2025/livermore/temp2.md');
+
+    expect(result[0].midPath).toBe('articles/2023/jay');
+    expect(result[1].midPath).toBe('articles/2024/tom');
+    expect(result[2].midPath).toBe('articles/2025/livermore');
   });
 
   test('loadArticlesMeta :: normalPathDepth 5', () => {
@@ -67,12 +71,18 @@ describe('GithubActionHelper', () => {
     expect(result[4].fileLocation).toBe(
       'articles/2025/user1/Why-we-should-use-test-code/Why-we-should-use-test-code.md',
     );
+    expect(result[4].midPath).toBe(
+      'articles/2025/user1/Why-we-should-use-test-code',
+    );
 
     expect(result[5].authorName).toBe('user1');
     expect(result[5].writtenYear).toBe('2025');
     expect(result[5].fileName).toBe('Why-we-should-use-test-code2.html');
     expect(result[5].fileLocation).toBe(
       'articles/2025/user1/Why-we-should-use-test-code2/Why-we-should-use-test-code2.html',
+    );
+    expect(result[5].midPath).toBe(
+      'articles/2025/user1/Why-we-should-use-test-code2',
     );
   });
 });

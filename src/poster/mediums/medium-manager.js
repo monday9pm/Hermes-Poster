@@ -1,40 +1,45 @@
 const fs = require('fs');
 
 class MediumManager {
-  constructor(converter) {
+  constructor(converter, baseImageDirPath) {
     this.converter = converter;
+    this.baseImageDirPath = baseImageDirPath;
     this.mediumAuthors = [{}];
   }
 
-  async post({ authorName, fileName, fileLocation }, authorToken) {
+  async post({ authorName, fileName, fileLocation, midPath }, authorToken) {
     try {
-      const authorId = await this.findMediumAuthorIdBy(authorToken);
-      const isMarkdown = fileName.endsWith('.md');
-      const isHtml = fileName.endsWith('.html');
-      const data = {
-        // title: fileName.split('.')[0], // Medium supports writing title from MD file
-        contentFormat: isMarkdown ? 'markdown' : 'html',
-        content: this.getArticles(fileLocation, isMarkdown, isHtml),
-        // canonicalUrl: 'http://localhost:8080/post/453133',
-        publishStatus: 'draft',
-        notifyFollowers: false,
-      };
+      const { isArticleFormat, isMarkdown, isHtml } =
+        this.converter.isArticleFormat(fileName);
 
-      const response = await fetch(
-        `https://api.medium.com/v1/users/${authorId}/posts`,
-        {
-          method: 'POST',
-          body: JSON.stringify(data),
-          headers: {
-            Authorization: `Bearer ${authorToken}`,
-            'Content-Type': 'application/json',
+      if (isArticleFormat) {
+        const authorId = await this.findMediumAuthorIdBy(authorToken);
+
+        const data = {
+          // title: fileName.split('.')[0], // Medium supports writing title from MD file
+          contentFormat: isMarkdown ? 'markdown' : 'html',
+          content: this.getArticles(fileLocation, isMarkdown, isHtml, midPath),
+          // canonicalUrl: 'http://localhost:8080/post/453133',
+          publishStatus: 'draft',
+          notifyFollowers: false,
+        };
+
+        const response = await fetch(
+          `https://api.medium.com/v1/users/${authorId}/posts`,
+          {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+              Authorization: `Bearer ${authorToken}`,
+              'Content-Type': 'application/json',
+            },
           },
-        },
-      );
+        );
 
-      const responseJson = await response.json();
-      console.log('created post');
-      console.log(responseJson);
+        const responseJson = await response.json();
+        console.log('created post');
+        console.log(responseJson);
+      }
     } catch (err) {
       console.error(
         `Medium Manager :: post / author ${authorName}:: error ${err}`,
@@ -42,9 +47,13 @@ class MediumManager {
     }
   }
 
-  getArticles(fileLocation, isMarkdown, isHtml) {
+  getArticles(fileLocation, isMarkdown, isHtml, midPath) {
     return isMarkdown || isHtml
-      ? fs.readFileSync(fileLocation, 'utf8')
+      ? this.converter.generateArticle(
+          fileLocation,
+          midPath,
+          this.baseImageDirPath,
+        )
       : this.converter.toHtml(fs.readFileSync(fileLocation, 'utf8')); // TODO: remove or change
   }
 

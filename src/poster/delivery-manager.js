@@ -1,9 +1,10 @@
 const { GithubActionHelper } = require('../utils');
+const ArticleConverter = require('./article-converter');
 const MediumManager = require('./mediums/medium-manager');
 
 class DeliveryManager {
-  constructor(secretConfigFileName, articlesConfigFileName) {
-    this.mediumManager = new MediumManager();
+  constructor(secretConfigFileName, articlesConfigFileName, baseImageDirPath) {
+    this.mediumManager = new MediumManager(ArticleConverter, baseImageDirPath);
     this.secret = GithubActionHelper.loadSecret(secretConfigFileName);
     this.articleInfos = GithubActionHelper.loadArticlesMeta(
       articlesConfigFileName,
