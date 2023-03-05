@@ -10,6 +10,7 @@ class HermesPoster {
     this.articleConfigFileName = articleConfigFileName;
     this.baseImageDirPath = baseImageDirPath;
   }
+
   run() {
     const deliveryManager = new DeliveryManager(
       this.secretConfigFileName,

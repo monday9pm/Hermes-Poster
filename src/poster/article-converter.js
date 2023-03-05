@@ -26,13 +26,13 @@ class ArticleConverter {
     const originalArticle = fs.readFileSync(fileLocation, 'utf8');
     return ArticleConverter.convertImageDirPath(
       originalArticle,
-      baseImageDirPath + '/' + midPath,
+      `${baseImageDirPath}/${midPath}`,
     );
   }
 
   // TODO: Needs Test Code - To be support HTML
   static convertImageDirPath(originalArticle, baseImageDirPath) {
-    const uri = '(' + baseImageDirPath + '/assets/';
+    const uri = `(${baseImageDirPath}/assets/`;
     const regex = /\((assets\/)|(src="[\w%]+\/)|(href="[\w%]+\/)/g;
     return originalArticle.replace(regex, uri);
   }
